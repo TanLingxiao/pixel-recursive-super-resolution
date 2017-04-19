@@ -15,7 +15,7 @@ class DataSet(object):
     filename_queue = tf.train.string_input_producer(self.record_list, num_epochs=num_epoch)
     image_reader = tf.WholeFileReader()
     _, image_file = image_reader.read(filename_queue)
-    image = tf.image.decode_jpeg(image_file, 3)
+    image = tf.image.decode_png(image_file, 3)
     #preprocess
     hr_image = tf.image.resize_images(image, [32, 32])
     lr_image = tf.image.resize_images(image, [8, 8])
